@@ -1,0 +1,35 @@
+﻿@using EntityLayer.Concrete
+@model EntityLayer.Concrete.Blog
+@{
+    ViewData["Title"] = "EditBlog";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Blog Düzenle</h4>
+                @using (Html.BeginForm("EditBlog", "ControlPanel"))
+                {                  
+                    @Html.HiddenFor(p=>p.WriterID,new{@class="form-control"})
+                    @Html.HiddenFor(p=>p.BlogID,new{@class="form-control"})
+                    <label>Blog Başlığı</label>
+                    @Html.TextBoxFor(p=>p.BlogTitle,new{@class="form-control"})
+                    <label>Blog İçerik</label>
+                    @Html.TextAreaFor(p=>p.BlogContent,5,5,new{@class="form-control"})
+                    <label>Blog Kategorisi </label>
+                    @Html.DropDownListFor(p=>p.CategoryID,(List<SelectListItem>)ViewBag.BlogCategoryList,new{@class="form-control"})
+                    <label>Blog Thumbnail URL</label>
+                    @Html.TextBoxFor(p=>p.BlogThumbnailImage,new{@class="form-control"})
+                    <label>Blog Resim URL</label>
+                    @Html.TextBoxFor(p=>p.BlogImage,new{@class="form-control"})
+                    <label>Blog TarihL</label>
+                    @Html.TextBoxFor(p=>p.BlogCreateDate,new{@class="form-control"})
+                    <br />
+                    <button class="btn btn-primary">Güncelle</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+﻿@using EntityLayer.Concrete
+@model EntityLayer.Concrete.Blog
+@{
+    ViewData["Title"] = "AddBlog";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+<html>
+<head>
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+<body>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Blog Ekle</h4>
+            @using (Html.BeginForm("AddBlog", "ControlPanel", FormMethod.Post))
+            {
+                <label>Blog Kategorisi</label>
+                @Html.DropDownListFor(p=>p.CategoryID,(List<SelectListItem>)ViewBag.BlogCategoryList,new{@class="form-control ",@id="search"})
+                <label>Blog Başlığı</label>
+                @Html.TextBoxFor(p=>p.BlogTitle,new{@class="form-control"})
+                <label>Blog Yazısı</label>
+                @Html.TextAreaFor(p=>p.BlogContent,5,5,new{@class="form-control"})
+                <label>Blog Küçük Resim</label>
+                @Html.TextBoxFor(p=>p.BlogThumbnailImage,new{@class="form-control"})
+                <label>Blog Büyük Resim</label>
+                @Html.TextBoxFor(p=>p.BlogImage,new{@class="form-control"})
+                <input name="BlogCreateDate" hidden value="@DateTime.Now" />
+                <br />
+
+                <button class="btn btn-primary">Blog Yayınla</button>
+            }
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    $(function () {
+        $('#search').select2();
+    });
+</script>
+
