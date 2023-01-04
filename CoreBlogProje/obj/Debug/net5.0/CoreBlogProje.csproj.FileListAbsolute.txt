@@ -448,3 +448,4 @@ C:\Users\ÜNSAL\Desktop\ASP. NET MVC  DERSLERİ\CoreBlogProje\CoreBlogProje\obj\
 C:\Users\ÜNSAL\Desktop\ASP. NET MVC  DERSLERİ\CoreBlogProje\CoreBlogProje\obj\Debug\net5.0\Razor\Areas\Admin\Views\Role\RoleAssign.cshtml.g.cs
 C:\Users\ÜNSAL\Desktop\ASP. NET MVC  DERSLERİ\CoreBlogProje\CoreBlogProje\obj\Debug\net5.0\Razor\Areas\Admin\Views\UserList\UsersList.cshtml.g.cs
 C:\Users\ÜNSAL\Desktop\ASP. NET MVC  DERSLERİ\CoreBlogProje\CoreBlogProje\obj\Debug\net5.0\Razor\Areas\Writer\Views\Shared\Components\WriterTodayMessageList\Default.cshtml.g.cs
+C:\Users\ÜNSAL\Desktop\ASP. NET MVC  DERSLERİ\CoreBlogProje\CoreBlogProje\obj\Debug\net5.0\Razor\Areas\Writer\Views\Announcement\AnnouncementDetails.cshtml.g.cs

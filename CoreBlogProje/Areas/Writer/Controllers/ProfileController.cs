@@ -33,23 +33,7 @@ namespace CoreBlogProje.Areas.Writer.Controllers
         [HttpPost]
         [Route("")]
         [Route("Index")]
-        //Resim dahil olmadan  profil bilgilerini güncelleme
         public async Task<IActionResult> Index(UserProfileEdit u)
-        {
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);     
-            user.Name = u.Name;
-            user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, u.Password);
-            var result = await _userManager.UpdateAsync(user);
-            if (result.Succeeded)
-            {
-                return RedirectToAction("Index", "Login");
-               
-            }
-            return View();
-        }
-        [HttpPost]
-        //sadece resim  güncelleme
-        public async Task<IActionResult> ImageUpload(UserProfileEdit u)
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
             if (u.Picture != null)
@@ -65,11 +49,16 @@ namespace CoreBlogProje.Areas.Writer.Controllers
                 var stream = new FileStream(savelocation, FileMode.Create);
                 await u.Picture.CopyToAsync(stream);
                 user.ImageURL = imagename;
-                var imageresult = await _userManager.UpdateAsync(user);
-
             }
-            return RedirectToAction("WriterBlogList", "ControlPanel",new {area="Writer"});
-
+            user.Name = u.Name;
+            user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, u.Password);
+            var result = await _userManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            return View();
         }
+  
     }
 }

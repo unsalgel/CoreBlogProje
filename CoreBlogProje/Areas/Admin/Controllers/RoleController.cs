@@ -58,9 +58,14 @@ namespace CoreBlogProje.Areas.Admin.Controllers
         public async Task<IActionResult> UpdateRole(RoleViewModel model, string id)
         {
             IdentityResult result = null;
-            WriterRole role = await _roleManager.FindByIdAsync(id);
-            role.Name = model.Name;
-            result = await _roleManager.UpdateAsync(role);
+            if (id != null)
+            {
+          
+                WriterRole role = await _roleManager.FindByIdAsync(id);
+                role.Name = model.Name;
+                result = await _roleManager.UpdateAsync(role);
+            }
+          
             return RedirectToAction("Index");
         }
 
